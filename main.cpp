@@ -341,7 +341,8 @@ void RenderFrame(void)
 		frameCounter++;
 		temp_time = GetTickCount() - seconds;
 		ProcessKeyboardInput(controls->GetKeyboardInput());
-		ProcessMouseInput(&controls->GetMouseInput());
+		DIMOUSESTATE mouseState = controls->GetMouseInput();
+		ProcessMouseInput(&mouseState);
 
 		d3ddev->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &backbuffer);
 		HRESULT hr = backbuffer->LockRect(&locked_rect, NULL, 0);
